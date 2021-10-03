@@ -20,7 +20,7 @@ public class Connections {
     public  Connection Create_Connections(){
         try{
        Class.forName("com.mysql.jdbc.Driver");
-        DB_Url= "jdbc:mysql://localhost/bms?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        DB_Url= "jdbc:mysql://localhost/bms1?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         Username="root";
         password="";
         conn=DriverManager.getConnection(DB_Url,Username,password);
