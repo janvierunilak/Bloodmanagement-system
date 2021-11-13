@@ -8,12 +8,13 @@ and open the template in the editor.
     Author     : Kwizera
 */
 #vbox {
-    -fx-background-color: rgb(255,153,153);
+    -fx-background-color: rgb(255, 153, 153);
     -fx-padding: 15;
     -fx-spacing: 10;
-    -fx-width:300px;
+    -fx-width: 300px;
 }
-#hbox{
+
+#hbox {
     -fx-background-color: #cc0000;
     -fx-padding: 15;
     -fx-spacing: 10;
