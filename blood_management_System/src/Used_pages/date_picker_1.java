@@ -38,7 +38,7 @@ public class date_picker_1 {
         frame.add(fxPanel);
         frame.setSize(500, 400);
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Platform.runLater(new Runnable() {
             @Override
@@ -66,6 +66,7 @@ public class date_picker_1 {
 
         Label greeting_label = new Label("Hello there ");
         DatePicker datePicker = new DatePicker();
+        datePicker.setEditable(false);
         datePicker.setDayCellFactory(picker -> new DateCell() {
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);

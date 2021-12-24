@@ -14,8 +14,8 @@ import javax.swing.JOptionPane;
  * @author valen
  */
 public class Signup_authentications {
-    Connections connections = new Connections();
-    Connection conn = connections.Create_Connections();
+    //Connections connections = new Connections();
+    Connection conn =   Connections.Create_Connections();
     PreparedStatement preparedstatement = null;
     ResultSet Result = null;
 

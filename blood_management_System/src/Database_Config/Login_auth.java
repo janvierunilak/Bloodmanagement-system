@@ -10,15 +10,16 @@ import Used_pages.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  * @author valen
  */
 public class Login_auth {
-    Connections connections = new Connections();
+    //Connections connections = new Connections();
     PreparedStatement ps;
 
-    public void userlogin(String username, String password) {
+    public boolean userlogin(String username, String password) {
 //        boolean isNormaluser=false;
 //          boolean isHospital=false;
 //            boolean isBloodBank=false;
@@ -30,14 +31,14 @@ public class Login_auth {
         String usertype = "";
         String querry = "select *from users where username=?";
         try {
-            ps = connections.Create_Connections().prepareStatement(querry);
+            ps =   Connections.Create_Connections().prepareStatement(querry);
             ps.setString(1, username);
             ResultSet usercredentials = ps.executeQuery();
             if (usercredentials.next()) {
                 securedpass = usercredentials.getString("Password");
                 salt = usercredentials.getString("salt");
                 usertype = usercredentials.getString("user_type");
-            }
+            
             truelyuser = PasswordUtils.verifyUserPassword(password, securedpass, salt);
             System.out.println("is user found? " + truelyuser);
             // new donorprofile(username).setVisible(true);
@@ -55,13 +56,23 @@ public class Login_auth {
                 } else {
                     System.out.println("No other user type supported yet!");
                 }
-
-
-            } else System.out.println("User credentials no match!");
+  
+            } else {
+                System.out.println("User credentials no match!");
+                JOptionPane.showMessageDialog(null,"Credentials failed to match!","Error",JOptionPane.ERROR_MESSAGE);
+            
+            }
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"No such user in our system!","Error",JOptionPane.ERROR_MESSAGE);
+             
+            }
+           
+                     
         } catch (Exception e) {
 
         }
-
+return truelyuser;
     }
 
 

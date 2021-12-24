@@ -13,12 +13,12 @@ import java.sql.*;
  * @author valen
  */
 public class Connections {
-    Connection conn = null;
-    String DB_Url = null;
-    String Username = null;
-    String password = null;
+   static Connection conn = null;
+    static String DB_Url = null;
+   static  String Username = null;
+    static String password = null;
 
-    public Connection Create_Connections() {
+    public static Connection Create_Connections() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             DB_Url = "jdbc:mysql://localhost/bms1?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";

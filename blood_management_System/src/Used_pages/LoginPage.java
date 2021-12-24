@@ -13,12 +13,17 @@ import java.awt.Color;
  * @author valen
  */
 public class LoginPage extends javax.swing.JFrame {
-
+  static LoginPage lp=new LoginPage();
     /**
      * Creates new form LoginPage
      */
     public LoginPage() {
         initComponents();
+    }
+    public LoginPage(LoginPage lp){
+        initComponents();
+        this.lp=lp;
+        
     }
 
     /**
@@ -254,9 +259,10 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        System.out.println("User is entering...");
-        new Login_auth().userlogin(username.getText(), password.getText());
-        this.setVisible(false);
+       // System.out.println("User is entering...");
+      if( new Login_auth().userlogin(username.getText(), password.getText())){
+          this.setVisible(false);
+      };
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -294,7 +300,7 @@ public class LoginPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginPage().setVisible(true);
+            new LoginPage(lp).setVisible(true);
             }
         });
     }

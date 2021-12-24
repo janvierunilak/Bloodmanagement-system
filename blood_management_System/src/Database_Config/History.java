@@ -5,6 +5,7 @@
  */
 package Database_Config;
 
+import Used_pages.Donationreq;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,14 +15,14 @@ import java.util.ArrayList;
  * @author Kwizera
  */
 public class History {
-    Connections connections = new Connections();
-    Connection my_con = connections.Create_Connections();
+   // Connections connections = new Connections();
+    Connection my_con =   Connections.Create_Connections();
     PreparedStatement ps;
+Donationreq donationreq;
+    public ArrayList<Donationreq> GetBloodRequestHistory(String username) {
+        ArrayList<Donationreq> blood_requet_list = new ArrayList<>();
 
-    public ArrayList<String> GetBloodRequestHistory(String username) {
-        ArrayList<String> blood_requet_list = new ArrayList<>();
-
-        String myquerry = "select place,date,status from donnation_request where donnorId=?";
+        String myquerry = "select *from donnation_request where donnorId=?";
         try {
             ps = my_con.prepareStatement("Select Id from users where username=?");
             ps.setString(1, username);
@@ -30,13 +31,13 @@ public class History {
             if (rs.next())
                 userid = rs.getInt("Id");
 
-
             ps = my_con.prepareStatement(myquerry);
             ps.setInt(1, userid);
             rs = ps.executeQuery();
             while (rs.next()) {
+                donationreq=new Donationreq(rs.getInt("Id"),rs.getString("date"),rs.getString("Status"),rs.getString("place"));
                 String userdetails = "Date: " + rs.getString("date") + ", " + "place: " + rs.getString("place") + ",  " + "Status: " + rs.getString("Status");
-                blood_requet_list.add(userdetails);
+                blood_requet_list.add( donationreq);
 
             }
         } catch (Exception e) {

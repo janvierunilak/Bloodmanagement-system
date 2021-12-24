@@ -8,13 +8,14 @@ package Database_Config;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  * @author janvier
  */
 public class donationdate {
-    Connections connections = new Connections();
-    Connection my_con = connections.Create_Connections();
+    //Connections connections = new Connections();
+    Connection my_con =   Connections.Create_Connections();
     PreparedStatement ps;
 
     public void RequestDonnation(String username, String place, String date) {
@@ -37,6 +38,8 @@ public class donationdate {
             ps.setString(3, date);
             ps.executeUpdate();
             System.out.println("Donnation request has occured!!");
+            JOptionPane.showMessageDialog(null,"Donnation request has occured!!","Info",JOptionPane.INFORMATION_MESSAGE);
+             
 
         } catch (Exception ex) {
             ex.printStackTrace();
